@@ -1,5 +1,5 @@
 platform :ios, '9.0'
-#use_frameworks!
+use_frameworks!
 inhibit_all_warnings!
 
 
@@ -9,4 +9,5 @@ target 'iot' do
    pod 'PromiseKit', '~> 6.0'
    pod 'Toast-Swift', '~> 4.0.0'
    pod 'SwifterSwift'
+   pod 'CocoaMQTT'
 end

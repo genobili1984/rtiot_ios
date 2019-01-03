@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01328EF84A29383A1C5B2586 /* libPods-iot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1C3C8767FF11EF42FE445E /* libPods-iot.a */; };
+		00C5C326791C86813EC45785 /* Pods_iot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D580D4104294A003F9EDD6 /* Pods_iot.framework */; };
 		03EA3BAC21DD91B700A901A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3BAB21DD91B700A901A1 /* AppDelegate.swift */; };
 		03EA3BB321DD91B800A901A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03EA3BB221DD91B800A901A1 /* Assets.xcassets */; };
 		03EA3BB621DD91B800A901A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03EA3BB421DD91B800A901A1 /* LaunchScreen.storyboard */; };
@@ -21,6 +21,7 @@
 		03EA3BEE21DDB4B000A901A1 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EA3BEC21DDB4B000A901A1 /* HomeViewController.xib */; };
 		03EA3BF121DDC1F300A901A1 /* RTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3BF021DDC1F300A901A1 /* RTAPI.swift */; };
 		03EA3BF421DDF6BE00A901A1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3BF321DDF6BE00A901A1 /* StringExtension.swift */; };
+		03EA3BF621DE216300A901A1 /* PromiseKit+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3BF521DE216300A901A1 /* PromiseKit+Moya.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +61,9 @@
 		03EA3BEC21DDB4B000A901A1 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		03EA3BF021DDC1F300A901A1 /* RTAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAPI.swift; sourceTree = "<group>"; };
 		03EA3BF321DDF6BE00A901A1 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		03EA3BF521DE216300A901A1 /* PromiseKit+Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PromiseKit+Moya.swift"; sourceTree = "<group>"; };
 		44039A197533FD59CBBEA542 /* Pods-iot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iot.debug.xcconfig"; path = "Target Support Files/Pods-iot/Pods-iot.debug.xcconfig"; sourceTree = "<group>"; };
-		DD1C3C8767FF11EF42FE445E /* libPods-iot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		45D580D4104294A003F9EDD6 /* Pods_iot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5DF3C2A3F1703F6E061E6A2 /* Pods-iot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iot.release.xcconfig"; path = "Target Support Files/Pods-iot/Pods-iot.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01328EF84A29383A1C5B2586 /* libPods-iot.a in Frameworks */,
+				00C5C326791C86813EC45785 /* Pods_iot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				03EA3BF321DDF6BE00A901A1 /* StringExtension.swift */,
+				03EA3BF521DE216300A901A1 /* PromiseKit+Moya.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -185,7 +188,7 @@
 		2C746D6697DADC8D73467C96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DD1C3C8767FF11EF42FE445E /* libPods-iot.a */,
+				45D580D4104294A003F9EDD6 /* Pods_iot.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				03EA3BA421DD91B700A901A1 /* Sources */,
 				03EA3BA521DD91B700A901A1 /* Frameworks */,
 				03EA3BA621DD91B700A901A1 /* Resources */,
+				5411914E0D47F9100AD0EA0F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -329,6 +333,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5411914E0D47F9100AD0EA0F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iot/Pods-iot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iot/Pods-iot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5719A568407B65EAD6E1367A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -362,6 +404,7 @@
 				03EA3BE721DDB2BD00A901A1 /* iOTCategoryViewCell.swift in Sources */,
 				03EA3BF421DDF6BE00A901A1 /* StringExtension.swift in Sources */,
 				03EA3BF121DDC1F300A901A1 /* RTAPI.swift in Sources */,
+				03EA3BF621DE216300A901A1 /* PromiseKit+Moya.swift in Sources */,
 				03EA3BAC21DD91B700A901A1 /* AppDelegate.swift in Sources */,
 				03EA3BED21DDB4B000A901A1 /* HomeViewController.swift in Sources */,
 			);
