@@ -1,6 +1,0 @@
-module Pods_iot {
-  umbrella header "Pods-iot-umbrella.h"
-
-  export *
-  module * { export * }
-}

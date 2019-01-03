@@ -1,1 +1,0 @@
-/Users/genobilimao/code/iot/Pods/Target Support Files/Alamofire/Alamofire-umbrella.h
