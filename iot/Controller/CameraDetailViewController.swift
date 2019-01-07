@@ -10,6 +10,16 @@ import UIKit
 
 class CameraDetailViewController: UIViewController {
     
+    @IBOutlet weak var enterpriseNameLabel: UILabel!
+    @IBOutlet weak var equipmentNameLabel: UILabel!
+    @IBOutlet weak var installLocationLabel: UILabel!
+    @IBOutlet weak var installTimeLabel: UILabel!
+    @IBOutlet weak var latitudeLabel: UILabel!
+    @IBOutlet weak var longitudeLabel: UILabel!
+    @IBOutlet weak var equipmentStateLabel: UILabel!
+    @IBOutlet weak var equipmentFaultLabel: UILabel!
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -19,16 +29,4 @@ class CameraDetailViewController: UIViewController {
     }
 
 
-}
-
-extension CameraDetailViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }
-    
-    
 }
