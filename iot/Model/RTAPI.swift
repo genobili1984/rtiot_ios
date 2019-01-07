@@ -13,31 +13,33 @@ let RTAPIProvider = MoyaProvider<RTApi>(plugins: [NetworkLoggerPlugin(verbose: t
 
 public enum RTApi  {
     case login(username: String, passwd:String)
+    case deviceList(enterpriseID: String)
     
 }
 
 extension RTApi : TargetType {
     public var baseURL : URL {
-        return URL(string: "http://35.201.253.132:4151")!
+        return URL(string: "http://47.107.49.84:8085")!
     }
     
     public var path: String {
         switch self {
         case .login:
-            return "/login"
+            return "/islogin"
+        case .deviceList:
+            return "/wapSearchEquipment"
         }
     }
     
     public var method: Moya.Method {
-        switch self {
-        case .login:
-            return .post
-        }
+        return .post
     }
     
     public var sampleData: Data {
         switch self {
         case .login:
+            return "{}".data(using: String.Encoding.utf8)!
+        case .deviceList:
             return "{}".data(using: String.Encoding.utf8)!
         }
     }
@@ -45,12 +47,14 @@ extension RTApi : TargetType {
     public var task: Task {
         switch self {
         case .login(let username, let passwd):
-            return .requestParameters(parameters: ["username": username, "password":passwd], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["userName": username, "password":passwd], encoding: URLEncoding.default)
+        case .deviceList(let enterpriseID):
+            return .requestParameters(parameters: ["enterprise": enterpriseID], encoding: URLEncoding.default)
         }
     }
     
     public var headers: [String : String]? {
-        return ["Content-Type":"application/json"]
+        return ["Content-Type":"application/x-www-form-urlencoded"]       
     }
     
    

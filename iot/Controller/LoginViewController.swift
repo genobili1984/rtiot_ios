@@ -50,31 +50,61 @@ class LoginViewController: UIViewController {
     */
 
     @IBAction func loginBtnClick(_ sender: Any) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-//        SwifterSwift.delay(milliseconds: 1000) {
-//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-//            let homeView = HomeViewController(nibName:"HomeViewController", bundle:nil)
-//            let naviControler = UINavigationController(rootViewController: homeView)
-//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//            appDelegate.window?.rootViewController = naviControler
-//        }
-        let username = self.accountTextField.text
+        let username = self.accountTextField.text ?? ""
         let password = self.passwdTextField.text
         let md5 = password?.MD5 ?? ""
-        RTAPIProvider.request(.login(username: username ?? "", passwd: md5.uppercased())) { result in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            do {
-                let response = try result.get()
-                let value = try response.mapNSDictioary()
-                if value["ret"] != nil && value["ret"] as? Int32 == 0 {
+//        RTAPIProvider.request(.login(username: username ?? "", passwd: md5.uppercased())) { result in
+//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//            do {
+//                let response = try result.get()
+//                let value = try response.mapNSDictioary()
+//                if value["ret"] != nil && value["ret"] as? Int32 == 0 {
+//                    let homeView = HomeViewController(nibName:"HomeViewController", bundle:nil)
+//                    let naviControler = UINavigationController(rootViewController: homeView)
+//                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//                    appDelegate.window?.rootViewController = naviControler
+//                }
+//            }catch {
+//                self.view?.makeToast("登录失败", duration: 2.0, position: .bottom)
+//            }
+//        }
+//        firstly { () -> Promise<Moya.Response> in
+//            return RTAPIProvider.request(target: .login(username: username ?? "", passwd: md5.uppercased()))
+//        }.done { (response) -> Void in
+//            do {
+//                let decoder = JSONDecoder()
+//                let loginResult = try decoder.decode(LoginResult.self, from: response.data)
+//                if loginResult.code == 0  {
+//                    let homeView = HomeViewController(nibName:"HomeViewController", bundle:nil)
+//                    let naviControler = UINavigationController(rootViewController: homeView)
+//                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//                    appDelegate.window?.rootViewController = naviControler
+//                }
+//            }catch {
+//                self.view?.makeToast("登录失败", duration: 2.0, position: .bottom)
+//            }
+//        }.ensure {
+//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//        }.catch { [weak self] (error) in
+//            self?.view?.makeToast("登录失败", duration: 2.0, position: .bottom)
+//        }
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        firstly {
+            RTAPIProvider.request(target: .login(username: username, passwd: md5.lowercased()))
+        }.done { (response) -> Void in
+                let decoder = JSONDecoder()
+                let loginResult = try decoder.decode(LoginResult.self, from: response.data)
+                if loginResult.retCode == 1000  {
                     let homeView = HomeViewController(nibName:"HomeViewController", bundle:nil)
+                    homeView.enterPriseID = loginResult.userInfo.enterPriseID
                     let naviControler = UINavigationController(rootViewController: homeView)
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.window?.rootViewController = naviControler
                 }
-            }catch {
-                self.view?.makeToast("登录失败", duration: 2.0, position: .bottom)
-            }
+            }.catch { [weak self](error) in
+             self?.view?.makeToast("登录失败", duration: 2.0, position: .bottom)
+            }.finally {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
 }

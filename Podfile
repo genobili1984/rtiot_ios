@@ -10,4 +10,5 @@ target 'iot' do
    pod 'Toast-Swift', '~> 4.0.0'
    pod 'SwifterSwift'
    pod 'CocoaMQTT'
+   pod 'SwiftyJSON', '~> 4.0'
 end

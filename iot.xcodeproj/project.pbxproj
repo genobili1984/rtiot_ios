@@ -22,6 +22,7 @@
 		03EA3BF121DDC1F300A901A1 /* RTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3BF021DDC1F300A901A1 /* RTAPI.swift */; };
 		03EA3BF421DDF6BE00A901A1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3BF321DDF6BE00A901A1 /* StringExtension.swift */; };
 		03EA3BF621DE216300A901A1 /* PromiseKit+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3BF521DE216300A901A1 /* PromiseKit+Moya.swift */; };
+		03EA3BF821DEE43700A901A1 /* iotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3BF721DEE43700A901A1 /* iotModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		03EA3BF021DDC1F300A901A1 /* RTAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAPI.swift; sourceTree = "<group>"; };
 		03EA3BF321DDF6BE00A901A1 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		03EA3BF521DE216300A901A1 /* PromiseKit+Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PromiseKit+Moya.swift"; sourceTree = "<group>"; };
+		03EA3BF721DEE43700A901A1 /* iotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iotModel.swift; sourceTree = "<group>"; };
 		44039A197533FD59CBBEA542 /* Pods-iot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iot.debug.xcconfig"; path = "Target Support Files/Pods-iot/Pods-iot.debug.xcconfig"; sourceTree = "<group>"; };
 		45D580D4104294A003F9EDD6 /* Pods_iot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5DF3C2A3F1703F6E061E6A2 /* Pods-iot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iot.release.xcconfig"; path = "Target Support Files/Pods-iot/Pods-iot.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				03EA3BF021DDC1F300A901A1 /* RTAPI.swift */,
+				03EA3BF721DEE43700A901A1 /* iotModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -364,6 +368,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,6 +411,7 @@
 				03EA3BF121DDC1F300A901A1 /* RTAPI.swift in Sources */,
 				03EA3BF621DE216300A901A1 /* PromiseKit+Moya.swift in Sources */,
 				03EA3BAC21DD91B700A901A1 /* AppDelegate.swift in Sources */,
+				03EA3BF821DEE43700A901A1 /* iotModel.swift in Sources */,
 				03EA3BED21DDB4B000A901A1 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
