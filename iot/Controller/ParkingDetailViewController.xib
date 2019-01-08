@@ -10,16 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraDetailViewController" customModule="iot" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ParkingDetailViewController" customModule="iot" customModuleProvider="target">
             <connections>
                 <outlet property="enterpriseNameLabel" destination="iqL-no-ifq" id="Gfa-Kb-1Bx"/>
                 <outlet property="equipmentFaultLabel" destination="WvZ-QP-zeG" id="Mx0-Sx-TVK"/>
                 <outlet property="equipmentNameLabel" destination="wav-xk-fd4" id="ITy-zD-x7Z"/>
-                <outlet property="equipmentStateLabel" destination="d68-d0-tYB" id="tEx-la-kmJ"/>
                 <outlet property="installLocationLabel" destination="L7r-MU-xFU" id="a1w-LZ-q89"/>
                 <outlet property="installTimeLabel" destination="cAk-mq-NVW" id="CNd-gf-ReM"/>
                 <outlet property="latitudeLabel" destination="zGp-cA-Y47" id="OWQ-4A-2J0"/>
                 <outlet property="longitudeLabel" destination="Fe2-gS-DQd" id="TVn-EU-k0G"/>
+                <outlet property="parkingOwnerLabel" destination="d68-d0-tYB" id="NXQ-2p-csL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -70,7 +70,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="设备状态：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVW-vv-YCO">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="车位归属：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVW-vv-YCO">
                     <rect key="frame" x="12" y="248" width="80" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>

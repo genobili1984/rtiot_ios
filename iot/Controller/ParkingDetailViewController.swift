@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CameraDetailViewController: UIViewController {
+class ParkingDetailViewController: UIViewController {
     
     @IBOutlet weak var enterpriseNameLabel: UILabel!
     @IBOutlet weak var equipmentNameLabel: UILabel!
@@ -16,13 +16,13 @@ class CameraDetailViewController: UIViewController {
     @IBOutlet weak var installTimeLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
-    @IBOutlet weak var equipmentStateLabel: UILabel!
+    @IBOutlet weak var parkingOwnerLabel: UILabel!
     @IBOutlet weak var equipmentFaultLabel: UILabel!
     
     
     @IBOutlet weak var tableView: UITableView!
     
-    var cameraInfo : CameraInfo?
+    var parkingInfo : ParkingInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,6 @@ class CameraDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.title = "摄像头详情"
         self.initDetailInfo()
-        
         let name = NSNotification.Name(rawValue: MQTTMessageNoti)
         NotificationCenter.default.addObserver(self, selector: #selector(LampDetailViewController.receivedMessage(notification:)), name: name, object: nil)
     }
@@ -39,15 +38,15 @@ class CameraDetailViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
-     private func initDetailInfo() {
-        self.enterpriseNameLabel.text = cameraInfo?.enterpriseName ?? ""
-        self.equipmentNameLabel.text = cameraInfo?.equipmentName ?? ""
-        self.installLocationLabel.text = cameraInfo?.installLocation ?? ""
-        self.installTimeLabel.text = cameraInfo?.installTime ?? ""
-        self.latitudeLabel.text = cameraInfo?.latitude ?? ""
-        self.longitudeLabel.text = cameraInfo?.longitude ?? ""
-        self.equipmentStateLabel.text = cameraInfo?.lampIsOpen ?? false ? "开" : "关"
-        self.equipmentFaultLabel.text = cameraInfo?.fault ?? "" == "0" ? "正常" : "损坏"
+    private func initDetailInfo() {
+        self.enterpriseNameLabel.text = parkingInfo?.enterpriseName ?? ""
+        self.equipmentNameLabel.text = parkingInfo?.equipmentName ?? ""
+        self.installLocationLabel.text = parkingInfo?.installLocation ?? ""
+        self.installTimeLabel.text = parkingInfo?.installTime ?? ""
+        self.latitudeLabel.text = parkingInfo?.latitude ?? ""
+        self.longitudeLabel.text = parkingInfo?.longitude ?? ""
+        self.parkingOwnerLabel.text = parkingInfo?.parkingIsOwn ?? false ? "私有" : "公用"
+        self.equipmentFaultLabel.text = parkingInfo?.fault ?? "" == "0" ? "正常" : "损坏"
     }
     
     @objc func receivedMessage(notification: NSNotification) {
@@ -56,4 +55,5 @@ class CameraDetailViewController: UIViewController {
         let topic = userInfo["topic"] as! String
         
     }
+
 }

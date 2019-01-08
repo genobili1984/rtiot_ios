@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CameraDetailViewController: UIViewController {
+class YonacoDetailViewController: UIViewController {
     
     @IBOutlet weak var enterpriseNameLabel: UILabel!
     @IBOutlet weak var equipmentNameLabel: UILabel!
@@ -18,11 +18,16 @@ class CameraDetailViewController: UIViewController {
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var equipmentStateLabel: UILabel!
     @IBOutlet weak var equipmentFaultLabel: UILabel!
+    @IBOutlet weak var directionLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var PMLabel: UILabel!
+    @IBOutlet weak var rainfallLabel: UILabel!
+    @IBOutlet weak var speedLabel: UILabel!
     
     
     @IBOutlet weak var tableView: UITableView!
     
-    var cameraInfo : CameraInfo?
+    var yonacoInfo : YonacoInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,15 +44,20 @@ class CameraDetailViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
-     private func initDetailInfo() {
-        self.enterpriseNameLabel.text = cameraInfo?.enterpriseName ?? ""
-        self.equipmentNameLabel.text = cameraInfo?.equipmentName ?? ""
-        self.installLocationLabel.text = cameraInfo?.installLocation ?? ""
-        self.installTimeLabel.text = cameraInfo?.installTime ?? ""
-        self.latitudeLabel.text = cameraInfo?.latitude ?? ""
-        self.longitudeLabel.text = cameraInfo?.longitude ?? ""
-        self.equipmentStateLabel.text = cameraInfo?.lampIsOpen ?? false ? "开" : "关"
-        self.equipmentFaultLabel.text = cameraInfo?.fault ?? "" == "0" ? "正常" : "损坏"
+    private func initDetailInfo() {
+        self.enterpriseNameLabel.text = yonacoInfo?.enterpriseName ?? ""
+        self.equipmentNameLabel.text = yonacoInfo?.equipmentName ?? ""
+        self.installLocationLabel.text = yonacoInfo?.installLocation ?? ""
+        self.installTimeLabel.text = yonacoInfo?.installTime ?? ""
+        self.latitudeLabel.text = yonacoInfo?.latitude ?? ""
+        self.longitudeLabel.text = yonacoInfo?.longitude ?? ""
+        self.equipmentStateLabel.text = yonacoInfo?.lampIsOpen ?? false ? "开" : "关"
+        self.equipmentFaultLabel.text = yonacoInfo?.fault ?? "" == "0" ? "正常" : "损坏"
+        self.directionLabel.text = yonacoInfo?.yonacoDirection ?? ""
+        self.humidityLabel.text = yonacoInfo?.yonacoHumidity ?? ""
+        self.PMLabel.text = yonacoInfo?.yonacoSpeed ?? ""
+        self.rainfallLabel.text = yonacoInfo?.yonacoRainfall ?? ""
+        self.speedLabel.text = yonacoInfo?.yonacoSpeed ?? ""
     }
     
     @objc func receivedMessage(notification: NSNotification) {
@@ -56,4 +66,5 @@ class CameraDetailViewController: UIViewController {
         let topic = userInfo["topic"] as! String
         
     }
+
 }

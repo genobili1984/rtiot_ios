@@ -10,14 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraDetailViewController" customModule="iot" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LampDetailViewController" customModule="iot" customModuleProvider="target">
             <connections>
                 <outlet property="enterpriseNameLabel" destination="iqL-no-ifq" id="Gfa-Kb-1Bx"/>
                 <outlet property="equipmentFaultLabel" destination="WvZ-QP-zeG" id="Mx0-Sx-TVK"/>
                 <outlet property="equipmentNameLabel" destination="wav-xk-fd4" id="ITy-zD-x7Z"/>
-                <outlet property="equipmentStateLabel" destination="d68-d0-tYB" id="tEx-la-kmJ"/>
                 <outlet property="installLocationLabel" destination="L7r-MU-xFU" id="a1w-LZ-q89"/>
                 <outlet property="installTimeLabel" destination="cAk-mq-NVW" id="CNd-gf-ReM"/>
+                <outlet property="lampSwitch" destination="i7b-e4-EUY" id="8ST-pt-0DC"/>
                 <outlet property="latitudeLabel" destination="zGp-cA-Y47" id="OWQ-4A-2J0"/>
                 <outlet property="longitudeLabel" destination="Fe2-gS-DQd" id="TVn-EU-k0G"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -126,13 +126,6 @@
                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d68-d0-tYB">
-                    <rect key="frame" x="92" y="248" width="260" height="22"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WvZ-QP-zeG">
                     <rect key="frame" x="92" y="284" width="260" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -140,6 +133,13 @@
                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i7b-e4-EUY">
+                    <rect key="frame" x="92" y="244" width="49" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <action selector="switchChanged:" destination="-1" eventType="valueChanged" id="TdS-rK-ym6"/>
+                    </connections>
+                </switch>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

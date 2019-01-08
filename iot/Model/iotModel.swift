@@ -45,6 +45,7 @@ protocol DeviceInfo : Codable {
     var equipmentType : String?  {get set}   //设备类型
     var equipmentID : String? {get set}      //设备ID
     var equipmentCode : String? {get set}    //设备编号
+    var equipmentName : String? {get set}    //设备名称
     var gatewayID : String? {get set}        //网关
     var enterpriseID : String? {get set}     //企业ID
     var enterpriseName : String? {get set}   //企业名
@@ -61,6 +62,7 @@ struct CameraInfo : DeviceInfo {
     var equipmentType : String?
     var equipmentID : String?
     var equipmentCode : String?
+    var equipmentName : String?
     var gatewayID : String?
     var enterpriseID : String?
     var enterpriseName : String?
@@ -80,6 +82,7 @@ extension CameraInfo {
         case equipmentType
         case equipmentID = "equipmentId"
         case equipmentCode
+        case equipmentName
         case gatewayID = "gatewayId"
         case enterpriseID = "enterpriseId"
         case enterpriseName
@@ -99,6 +102,7 @@ struct LampInfo : DeviceInfo {
     var equipmentType : String?
     var equipmentID : String?
     var equipmentCode : String?
+    var equipmentName : String?
     var gatewayID : String?
     var enterpriseID : String?
     var enterpriseName : String?
@@ -118,6 +122,7 @@ extension LampInfo {
         case equipmentType
         case equipmentID = "equipmentId"
         case equipmentCode
+        case equipmentName
         case gatewayID = "gatewayId"
         case enterpriseID = "enterpriseId"
         case enterpriseName
@@ -137,6 +142,7 @@ struct SewerCoverInfo  : DeviceInfo {
     var equipmentType : String?
     var equipmentID : String?
     var equipmentCode : String?
+    var equipmentName : String?
     var gatewayID : String?
     var enterpriseID : String?
     var enterpriseName : String?
@@ -147,6 +153,7 @@ struct SewerCoverInfo  : DeviceInfo {
     var position  : String?
     var state : String?
     var fault : String?
+    var isOpen: Bool
 }
 
 extension SewerCoverInfo {
@@ -154,6 +161,7 @@ extension SewerCoverInfo {
         case equipmentType
         case equipmentID = "equipmentId"
         case equipmentCode
+        case equipmentName
         case gatewayID = "gatewayId"
         case enterpriseID = "enterpriseId"
         case enterpriseName
@@ -164,6 +172,7 @@ extension SewerCoverInfo {
         case position
         case state
         case fault
+        case isOpen = "sewercoverIsopen"
     }
 }
 
@@ -171,6 +180,7 @@ struct ParkingInfo : DeviceInfo {
     var equipmentType : String?
     var equipmentID : String?
     var equipmentCode : String?
+    var equipmentName : String?
     var gatewayID : String?
     var enterpriseID : String?
     var enterpriseName : String?
@@ -189,6 +199,7 @@ extension ParkingInfo {
         case equipmentType
         case equipmentID = "equipmentId"
         case equipmentCode
+        case equipmentName
         case gatewayID = "gatewayId"
         case enterpriseID = "enterpriseId"
         case enterpriseName
@@ -207,6 +218,7 @@ struct WaterLevelInfo : DeviceInfo {
     var equipmentType : String?
     var equipmentID : String?
     var equipmentCode : String?
+    var equipmentName : String?
     var gatewayID : String?
     var enterpriseID : String?
     var enterpriseName : String?
@@ -225,6 +237,7 @@ extension WaterLevelInfo {
         case equipmentType
         case equipmentID = "equipmentId"
         case equipmentCode
+        case equipmentName
         case gatewayID = "gatewayId"
         case enterpriseID = "enterpriseId"
         case enterpriseName
@@ -243,6 +256,7 @@ struct YonacoInfo : DeviceInfo {
     var equipmentType : String?
     var equipmentID : String?
     var equipmentCode : String?
+    var equipmentName : String?
     var gatewayID : String?
     var enterpriseID : String?
     var enterpriseName : String?
@@ -253,6 +267,7 @@ struct YonacoInfo : DeviceInfo {
     var position  : String?
     var state : String?
     var fault : String?
+    var lampIsOpen : Bool
     var yonacoDirection : String
     var yonacoHumidity : String
     var yonacoPM : String
@@ -265,6 +280,7 @@ extension YonacoInfo {
         case equipmentType
         case equipmentID = "equipmentId"
         case equipmentCode
+        case equipmentName
         case gatewayID = "gatewayId"
         case enterpriseID = "enterpriseId"
         case enterpriseName
@@ -275,67 +291,11 @@ extension YonacoInfo {
         case position
         case state
         case fault
+        case lampIsOpen = "lampIsopen"
         case yonacoDirection = "yanacoDirection"
         case yonacoHumidity = "yanacoHumidity"
         case yonacoPM = "yanacoPm"
         case yonacoRainfall = "yanacoRainfall"
         case yonacoSpeed = "yanacoSpeed"
     }
-}
-
-/*
-{
-    "branch": {
-        "subject": 5,
-        "total_students": 110,
-        "total_books": 150
-    },
-    "Subject": [
-    {
-    "subject_id": 301,
-    "name": "EMT",
-    "pratical": false,
-    "pratical_days": [
-    "Monday",
-    "Friday"
-    ]
-    },
-    {
-    "subject_id": 302,
-    "name": "Network Analysis",
-    "pratical": true,
-    "pratical_days": [
-    "Tuesday",
-    "Thursday"
-    ]
-    }
-    ]
-}
-*/
-
-
-struct Branch : Codable {
-    var subject : Int32
-    var totalStudents : Int32
-    var totalBooks : Int32
-}
-
-extension Branch {
-    enum CodingKeys: String, CodingKey {
-        case subject
-        case totalStudents = "total_student"
-        case totalBooks = "total_books"
-    }
-}
-
-struct Subject : Codable {
-    let subject_id: Int
-    let name: String
-    let pratical: Bool
-    let pratical_days: [String]
-}
-
-struct Students : Codable {
-    let branch:Branch
-    let subject : [Subject]
 }

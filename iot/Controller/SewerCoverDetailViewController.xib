@@ -10,16 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraDetailViewController" customModule="iot" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SewerCoverDetailViewController" customModule="iot" customModuleProvider="target">
             <connections>
                 <outlet property="enterpriseNameLabel" destination="iqL-no-ifq" id="Gfa-Kb-1Bx"/>
                 <outlet property="equipmentFaultLabel" destination="WvZ-QP-zeG" id="Mx0-Sx-TVK"/>
                 <outlet property="equipmentNameLabel" destination="wav-xk-fd4" id="ITy-zD-x7Z"/>
-                <outlet property="equipmentStateLabel" destination="d68-d0-tYB" id="tEx-la-kmJ"/>
                 <outlet property="installLocationLabel" destination="L7r-MU-xFU" id="a1w-LZ-q89"/>
                 <outlet property="installTimeLabel" destination="cAk-mq-NVW" id="CNd-gf-ReM"/>
                 <outlet property="latitudeLabel" destination="zGp-cA-Y47" id="OWQ-4A-2J0"/>
                 <outlet property="longitudeLabel" destination="Fe2-gS-DQd" id="TVn-EU-k0G"/>
+                <outlet property="sewerCoverOpenLabel" destination="d68-d0-tYB" id="Uy5-qu-SG5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

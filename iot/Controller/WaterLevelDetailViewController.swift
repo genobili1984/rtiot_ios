@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CameraDetailViewController: UIViewController {
+class WaterLevelDetailViewController: UIViewController {
     
     @IBOutlet weak var enterpriseNameLabel: UILabel!
     @IBOutlet weak var equipmentNameLabel: UILabel!
@@ -16,13 +16,13 @@ class CameraDetailViewController: UIViewController {
     @IBOutlet weak var installTimeLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
-    @IBOutlet weak var equipmentStateLabel: UILabel!
+    @IBOutlet weak var waterLineLabel: UILabel!
     @IBOutlet weak var equipmentFaultLabel: UILabel!
     
     
     @IBOutlet weak var tableView: UITableView!
     
-    var cameraInfo : CameraInfo?
+    var waterLevelInfo : WaterLevelInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,15 +39,15 @@ class CameraDetailViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
-     private func initDetailInfo() {
-        self.enterpriseNameLabel.text = cameraInfo?.enterpriseName ?? ""
-        self.equipmentNameLabel.text = cameraInfo?.equipmentName ?? ""
-        self.installLocationLabel.text = cameraInfo?.installLocation ?? ""
-        self.installTimeLabel.text = cameraInfo?.installTime ?? ""
-        self.latitudeLabel.text = cameraInfo?.latitude ?? ""
-        self.longitudeLabel.text = cameraInfo?.longitude ?? ""
-        self.equipmentStateLabel.text = cameraInfo?.lampIsOpen ?? false ? "开" : "关"
-        self.equipmentFaultLabel.text = cameraInfo?.fault ?? "" == "0" ? "正常" : "损坏"
+    private func initDetailInfo() {
+        self.enterpriseNameLabel.text = waterLevelInfo?.enterpriseName ?? ""
+        self.equipmentNameLabel.text = waterLevelInfo?.equipmentName ?? ""
+        self.installLocationLabel.text = waterLevelInfo?.installLocation ?? ""
+        self.installTimeLabel.text = waterLevelInfo?.installTime ?? ""
+        self.latitudeLabel.text = waterLevelInfo?.latitude ?? ""
+        self.longitudeLabel.text = waterLevelInfo?.longitude ?? ""
+        self.waterLineLabel.text = waterLevelInfo?.waterLine ?? ""
+        self.equipmentFaultLabel.text = waterLevelInfo?.fault ?? "" == "0" ? "正常" : "损坏"
     }
     
     @objc func receivedMessage(notification: NSNotification) {
@@ -56,4 +56,5 @@ class CameraDetailViewController: UIViewController {
         let topic = userInfo["topic"] as! String
         
     }
+
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CameraDetailViewController: UIViewController {
+class SewerCoverDetailViewController: UIViewController {
     
     @IBOutlet weak var enterpriseNameLabel: UILabel!
     @IBOutlet weak var equipmentNameLabel: UILabel!
@@ -16,13 +16,13 @@ class CameraDetailViewController: UIViewController {
     @IBOutlet weak var installTimeLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
-    @IBOutlet weak var equipmentStateLabel: UILabel!
+    @IBOutlet weak var sewerCoverOpenLabel: UILabel!
     @IBOutlet weak var equipmentFaultLabel: UILabel!
     
     
     @IBOutlet weak var tableView: UITableView!
     
-    var cameraInfo : CameraInfo?
+    var sewerCoverInfo : SewerCoverInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,24 +30,23 @@ class CameraDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.title = "摄像头详情"
         self.initDetailInfo()
-        
         let name = NSNotification.Name(rawValue: MQTTMessageNoti)
         NotificationCenter.default.addObserver(self, selector: #selector(LampDetailViewController.receivedMessage(notification:)), name: name, object: nil)
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-
-     private func initDetailInfo() {
-        self.enterpriseNameLabel.text = cameraInfo?.enterpriseName ?? ""
-        self.equipmentNameLabel.text = cameraInfo?.equipmentName ?? ""
-        self.installLocationLabel.text = cameraInfo?.installLocation ?? ""
-        self.installTimeLabel.text = cameraInfo?.installTime ?? ""
-        self.latitudeLabel.text = cameraInfo?.latitude ?? ""
-        self.longitudeLabel.text = cameraInfo?.longitude ?? ""
-        self.equipmentStateLabel.text = cameraInfo?.lampIsOpen ?? false ? "开" : "关"
-        self.equipmentFaultLabel.text = cameraInfo?.fault ?? "" == "0" ? "正常" : "损坏"
+    
+    private func initDetailInfo() {
+        self.enterpriseNameLabel.text = sewerCoverInfo?.enterpriseName ?? ""
+        self.equipmentNameLabel.text = sewerCoverInfo?.equipmentName ?? ""
+        self.installLocationLabel.text = sewerCoverInfo?.installLocation ?? ""
+        self.installTimeLabel.text = sewerCoverInfo?.installTime ?? ""
+        self.latitudeLabel.text = sewerCoverInfo?.latitude ?? ""
+        self.longitudeLabel.text = sewerCoverInfo?.longitude ?? ""
+        self.sewerCoverOpenLabel.text = sewerCoverInfo?.isOpen ?? false ? "开" : "关"
+        self.equipmentFaultLabel.text = sewerCoverInfo?.fault ?? "" == "0" ? "正常" : "损坏"
     }
     
     @objc func receivedMessage(notification: NSNotification) {

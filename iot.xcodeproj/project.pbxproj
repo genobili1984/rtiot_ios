@@ -23,6 +23,19 @@
 		03EA3BF421DDF6BE00A901A1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3BF321DDF6BE00A901A1 /* StringExtension.swift */; };
 		03EA3BF621DE216300A901A1 /* PromiseKit+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3BF521DE216300A901A1 /* PromiseKit+Moya.swift */; };
 		03EA3BF821DEE43700A901A1 /* iotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3BF721DEE43700A901A1 /* iotModel.swift */; };
+		03EA3BFB21E4275E00A901A1 /* CameraDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EA3BF921E4275E00A901A1 /* CameraDetailViewController.xib */; };
+		03EA3BFC21E4275E00A901A1 /* CameraDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3BFA21E4275E00A901A1 /* CameraDetailViewController.swift */; };
+		03EA3C0721E4345F00A901A1 /* SewerCoverDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3BFD21E4345E00A901A1 /* SewerCoverDetailViewController.swift */; };
+		03EA3C0821E4345F00A901A1 /* LampDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EA3BFE21E4345E00A901A1 /* LampDetailViewController.xib */; };
+		03EA3C0921E4345F00A901A1 /* YonacoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3BFF21E4345E00A901A1 /* YonacoDetailViewController.swift */; };
+		03EA3C0A21E4345F00A901A1 /* ParkingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3C0021E4345E00A901A1 /* ParkingDetailViewController.swift */; };
+		03EA3C0B21E4345F00A901A1 /* YonacoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EA3C0121E4345E00A901A1 /* YonacoDetailViewController.xib */; };
+		03EA3C0C21E4345F00A901A1 /* WaterLevelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3C0221E4345E00A901A1 /* WaterLevelDetailViewController.swift */; };
+		03EA3C0D21E4345F00A901A1 /* WaterLevelDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EA3C0321E4345E00A901A1 /* WaterLevelDetailViewController.xib */; };
+		03EA3C0E21E4345F00A901A1 /* ParkingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EA3C0421E4345E00A901A1 /* ParkingDetailViewController.xib */; };
+		03EA3C0F21E4345F00A901A1 /* SewerCoverDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EA3C0521E4345E00A901A1 /* SewerCoverDetailViewController.xib */; };
+		03EA3C1021E4345F00A901A1 /* LampDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3C0621E4345E00A901A1 /* LampDetailViewController.swift */; };
+		03EA3C1221E44A6900A901A1 /* MQTTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EA3C1121E44A6900A901A1 /* MQTTManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +77,19 @@
 		03EA3BF321DDF6BE00A901A1 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		03EA3BF521DE216300A901A1 /* PromiseKit+Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PromiseKit+Moya.swift"; sourceTree = "<group>"; };
 		03EA3BF721DEE43700A901A1 /* iotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iotModel.swift; sourceTree = "<group>"; };
+		03EA3BF921E4275E00A901A1 /* CameraDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraDetailViewController.xib; sourceTree = "<group>"; };
+		03EA3BFA21E4275E00A901A1 /* CameraDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraDetailViewController.swift; sourceTree = "<group>"; };
+		03EA3BFD21E4345E00A901A1 /* SewerCoverDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SewerCoverDetailViewController.swift; sourceTree = "<group>"; };
+		03EA3BFE21E4345E00A901A1 /* LampDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LampDetailViewController.xib; sourceTree = "<group>"; };
+		03EA3BFF21E4345E00A901A1 /* YonacoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YonacoDetailViewController.swift; sourceTree = "<group>"; };
+		03EA3C0021E4345E00A901A1 /* ParkingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingDetailViewController.swift; sourceTree = "<group>"; };
+		03EA3C0121E4345E00A901A1 /* YonacoDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YonacoDetailViewController.xib; sourceTree = "<group>"; };
+		03EA3C0221E4345E00A901A1 /* WaterLevelDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterLevelDetailViewController.swift; sourceTree = "<group>"; };
+		03EA3C0321E4345E00A901A1 /* WaterLevelDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterLevelDetailViewController.xib; sourceTree = "<group>"; };
+		03EA3C0421E4345E00A901A1 /* ParkingDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParkingDetailViewController.xib; sourceTree = "<group>"; };
+		03EA3C0521E4345E00A901A1 /* SewerCoverDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SewerCoverDetailViewController.xib; sourceTree = "<group>"; };
+		03EA3C0621E4345E00A901A1 /* LampDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LampDetailViewController.swift; sourceTree = "<group>"; };
+		03EA3C1121E44A6900A901A1 /* MQTTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTManager.swift; sourceTree = "<group>"; };
 		44039A197533FD59CBBEA542 /* Pods-iot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iot.debug.xcconfig"; path = "Target Support Files/Pods-iot/Pods-iot.debug.xcconfig"; sourceTree = "<group>"; };
 		45D580D4104294A003F9EDD6 /* Pods_iot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5DF3C2A3F1703F6E061E6A2 /* Pods-iot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iot.release.xcconfig"; path = "Target Support Files/Pods-iot/Pods-iot.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +188,18 @@
 		03EA3BEA21DDB31F00A901A1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				03EA3C0621E4345E00A901A1 /* LampDetailViewController.swift */,
+				03EA3BFE21E4345E00A901A1 /* LampDetailViewController.xib */,
+				03EA3C0021E4345E00A901A1 /* ParkingDetailViewController.swift */,
+				03EA3C0421E4345E00A901A1 /* ParkingDetailViewController.xib */,
+				03EA3BFD21E4345E00A901A1 /* SewerCoverDetailViewController.swift */,
+				03EA3C0521E4345E00A901A1 /* SewerCoverDetailViewController.xib */,
+				03EA3C0221E4345E00A901A1 /* WaterLevelDetailViewController.swift */,
+				03EA3C0321E4345E00A901A1 /* WaterLevelDetailViewController.xib */,
+				03EA3BFF21E4345E00A901A1 /* YonacoDetailViewController.swift */,
+				03EA3C0121E4345E00A901A1 /* YonacoDetailViewController.xib */,
+				03EA3BFA21E4275E00A901A1 /* CameraDetailViewController.swift */,
+				03EA3BF921E4275E00A901A1 /* CameraDetailViewController.xib */,
 				03EA3BD921DD995C00A901A1 /* LoginViewController.swift */,
 				03EA3BDA21DD995C00A901A1 /* LoginViewController.xib */,
 				03EA3BEB21DDB4B000A901A1 /* HomeViewController.swift */,
@@ -175,6 +213,7 @@
 			children = (
 				03EA3BF021DDC1F300A901A1 /* RTAPI.swift */,
 				03EA3BF721DEE43700A901A1 /* iotModel.swift */,
+				03EA3C1121E44A6900A901A1 /* MQTTManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,8 +352,14 @@
 			files = (
 				03EA3BB621DD91B800A901A1 /* LaunchScreen.storyboard in Resources */,
 				03EA3BE821DDB2BD00A901A1 /* iOTCategoryViewCell.xib in Resources */,
+				03EA3C0B21E4345F00A901A1 /* YonacoDetailViewController.xib in Resources */,
+				03EA3BFB21E4275E00A901A1 /* CameraDetailViewController.xib in Resources */,
 				03EA3BEE21DDB4B000A901A1 /* HomeViewController.xib in Resources */,
 				03EA3BB321DD91B800A901A1 /* Assets.xcassets in Resources */,
+				03EA3C0F21E4345F00A901A1 /* SewerCoverDetailViewController.xib in Resources */,
+				03EA3C0E21E4345F00A901A1 /* ParkingDetailViewController.xib in Resources */,
+				03EA3C0821E4345F00A901A1 /* LampDetailViewController.xib in Resources */,
+				03EA3C0D21E4345F00A901A1 /* WaterLevelDetailViewController.xib in Resources */,
 				03EA3BDC21DD995C00A901A1 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,13 +451,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				03EA3BDB21DD995C00A901A1 /* LoginViewController.swift in Sources */,
+				03EA3C1021E4345F00A901A1 /* LampDetailViewController.swift in Sources */,
 				03EA3BE721DDB2BD00A901A1 /* iOTCategoryViewCell.swift in Sources */,
+				03EA3BFC21E4275E00A901A1 /* CameraDetailViewController.swift in Sources */,
 				03EA3BF421DDF6BE00A901A1 /* StringExtension.swift in Sources */,
 				03EA3BF121DDC1F300A901A1 /* RTAPI.swift in Sources */,
 				03EA3BF621DE216300A901A1 /* PromiseKit+Moya.swift in Sources */,
+				03EA3C0C21E4345F00A901A1 /* WaterLevelDetailViewController.swift in Sources */,
 				03EA3BAC21DD91B700A901A1 /* AppDelegate.swift in Sources */,
 				03EA3BF821DEE43700A901A1 /* iotModel.swift in Sources */,
+				03EA3C0721E4345F00A901A1 /* SewerCoverDetailViewController.swift in Sources */,
+				03EA3C1221E44A6900A901A1 /* MQTTManager.swift in Sources */,
 				03EA3BED21DDB4B000A901A1 /* HomeViewController.swift in Sources */,
+				03EA3C0A21E4345F00A901A1 /* ParkingDetailViewController.swift in Sources */,
+				03EA3C0921E4345F00A901A1 /* YonacoDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

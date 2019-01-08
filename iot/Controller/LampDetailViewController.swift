@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CameraDetailViewController: UIViewController {
+class LampDetailViewController: UIViewController {
     
     @IBOutlet weak var enterpriseNameLabel: UILabel!
     @IBOutlet weak var equipmentNameLabel: UILabel!
@@ -16,13 +16,13 @@ class CameraDetailViewController: UIViewController {
     @IBOutlet weak var installTimeLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
-    @IBOutlet weak var equipmentStateLabel: UILabel!
+    @IBOutlet weak var lampSwitch: UISwitch!
     @IBOutlet weak var equipmentFaultLabel: UILabel!
     
     
     @IBOutlet weak var tableView: UITableView!
     
-    var cameraInfo : CameraInfo?
+    var lampInfo : LampInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,6 @@ class CameraDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.title = "摄像头详情"
         self.initDetailInfo()
-        
         let name = NSNotification.Name(rawValue: MQTTMessageNoti)
         NotificationCenter.default.addObserver(self, selector: #selector(LampDetailViewController.receivedMessage(notification:)), name: name, object: nil)
     }
@@ -38,22 +37,27 @@ class CameraDetailViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-
-     private func initDetailInfo() {
-        self.enterpriseNameLabel.text = cameraInfo?.enterpriseName ?? ""
-        self.equipmentNameLabel.text = cameraInfo?.equipmentName ?? ""
-        self.installLocationLabel.text = cameraInfo?.installLocation ?? ""
-        self.installTimeLabel.text = cameraInfo?.installTime ?? ""
-        self.latitudeLabel.text = cameraInfo?.latitude ?? ""
-        self.longitudeLabel.text = cameraInfo?.longitude ?? ""
-        self.equipmentStateLabel.text = cameraInfo?.lampIsOpen ?? false ? "开" : "关"
-        self.equipmentFaultLabel.text = cameraInfo?.fault ?? "" == "0" ? "正常" : "损坏"
+    
+    private func initDetailInfo() {
+        self.enterpriseNameLabel.text = lampInfo?.enterpriseName ?? ""
+        self.equipmentNameLabel.text = lampInfo?.equipmentName ?? ""
+        self.installLocationLabel.text = lampInfo?.installLocation ?? ""
+        self.installTimeLabel.text = lampInfo?.installTime ?? ""
+        self.latitudeLabel.text = lampInfo?.latitude ?? ""
+        self.longitudeLabel.text = lampInfo?.longitude ?? ""
+        self.lampSwitch.setOn(lampInfo?.lampIsOpen ?? false, animated: false)
+        self.equipmentFaultLabel.text = lampInfo?.fault ?? "" == "0" ? "正常" : "损坏"
     }
     
     @objc func receivedMessage(notification: NSNotification) {
         let userInfo = notification.userInfo as! [String: AnyObject]
         let content = userInfo["message"] as! String
         let topic = userInfo["topic"] as! String
+        print("topic = \(topic) content = \(content)")
+    }
+
+    @IBAction func switchChanged(_ sender: Any) {
         
     }
+    
 }
