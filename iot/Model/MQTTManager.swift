@@ -13,6 +13,7 @@ let MQTTMessageNoti = "MQTTMessageNotification"
 
 class MQTTManager {
     let defaultHost = "47.107.49.84"
+    static var mqttSeq = 0
     
     static let instance = MQTTManager()
     
@@ -30,9 +31,9 @@ class MQTTManager {
         mqtt?.disconnect()
     }
     
-    func sendMessage(_ message: String, withTopic topic:String?) {
+    func sendMessage(_ message: String, withTopic topic:String?) ->UInt16 {
         let _topic = topic ?? "streetl/"
-        mqtt?.publish(_topic, withString: message, qos: .qos1)
+        return  mqtt?.publish(_topic, withString: message, qos: .qos1) ?? 0
     }
     
     private func mqttSetting() {

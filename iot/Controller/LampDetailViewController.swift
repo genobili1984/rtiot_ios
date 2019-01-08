@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class LampDetailViewController: UIViewController {
     
@@ -56,8 +57,17 @@ class LampDetailViewController: UIViewController {
         print("topic = \(topic) content = \(content)")
     }
 
-    @IBAction func switchChanged(_ sender: Any) {
-        
+    @IBAction func switchChanged(_ sender: UISwitch) {
+        let dataValue = sender.isOn ? "70000000A09000" : "70000000A09099"
+        let mac =  "8CF957FFFF80015F"  //lampInfo?.gatewayID ?? ""
+        let deveui = "47993395002C0043" //lampInfo?.equipmentID ?? ""
+        let message = String(format: "{\"app\":\"top-lora-light-485\", \"mac\":\"%@\", \"deveui\":\"%@\",\"data\":\"%@\", \"port\":9, \"time\":\"immediately\"}", mac, deveui, dataValue )
+        guard message.count > 0 else {
+            return
+        }
+        let msgId = MQTTManager.instance.sendMessage(message, withTopic: "dev/top-lora-light-485")
+        print("message = \(message)")
+        print("messageId = \(msgId)")
     }
     
 }
