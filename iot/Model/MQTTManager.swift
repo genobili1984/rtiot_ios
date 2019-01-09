@@ -39,6 +39,7 @@ class MQTTManager {
     private func mqttSetting() {
         
         let clientID = UIDevice.current.identifierForVendor?.uuidString ?? "ios-device"
+        print("client id = \(clientID)")
         // mqtt = CocoaMQTT(clientID: clientID, host: defaultHost, port: 1883)
         mqtt = CocoaMQTT(clientID: clientID , host: defaultHost, port: 1883)
         //mqtt!.username = "admin"
