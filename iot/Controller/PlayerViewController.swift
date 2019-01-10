@@ -14,7 +14,7 @@ class PlayerViewController: UIViewController {
     var movieView: UIView!
     var activityView : UIActivityIndicatorView!
     
-    var cameraIP : String?
+    var videoURL : String?
     var mediaPlayer: VLCMediaPlayer = VLCMediaPlayer()
     
     var lastPlayerState : VLCMediaPlayerState = VLCMediaPlayerState.paused
@@ -47,13 +47,14 @@ class PlayerViewController: UIViewController {
         
         //Playing RTSP from internet
         //let url = URL(string: "rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov")
-        let strURL = String(format: "rtsp://%@:1554/Streaming/Channels/101?transportmode=unicast", cameraIP?.count ?? 0 == 0 ? "113.90.238.121" : cameraIP!)
-        let url = URL(string: strURL)
-        if url == nil {
+        //详细格式参照 https://blog.csdn.net/xiejiashu/article/details/71786187
+        //let strURL = String(format: "rtsp://%@:1554/Streaming/Channels/101?transportmode=unicast", cameraIP?.count ?? 0 == 0 ? "113.90.238.121" : cameraIP!)
+        //let strURL = String(format: "rtsp://%@:1554/Streaming/tracks/101?starttime=20180901t093812z&endtime=20180901t104816z", cameraIP?.count ?? 0 == 0 ? "113.90.238.121" : cameraIP!)
+        guard  videoURL != nil else {
             print("Invalid URL")
             return
         }
-        let media = VLCMedia(url: url!)
+        let media = VLCMedia(url: URL(string: videoURL!)!)
         media.addOptions([
             "rtsp-user" : "admin",
             "rtsp-pwd" : "topspeak@123"

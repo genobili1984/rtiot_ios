@@ -61,10 +61,10 @@ class LampDetailViewController: UIViewController {
         var dataValue =  ""
         if !sender.isOn {
             MQTTManager.mqttSeq += 1
-            dataValue = String(format: "7000%02d00A09000", MQTTManager.mqttSeq )
+            dataValue = String(format: "7000%02d00A09000", MQTTManager.mqttSeq%100 )
         }else{
             MQTTManager.mqttSeq += 1
-            dataValue = String(format: "7000%02d00A09099", MQTTManager.mqttSeq )
+            dataValue = String(format: "7000%02d00A09099", MQTTManager.mqttSeq%100 )
         }
         let mac =  "8CF957FFFF80015F"  //lampInfo?.gatewayID ?? ""
         let deveui = "47993395002C0043" //lampInfo?.equipmentID ?? ""

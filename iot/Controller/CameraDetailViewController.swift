@@ -20,6 +20,8 @@ class CameraDetailViewController: UIViewController {
     @IBOutlet weak var equipmentFaultLabel: UILabel!
     
     @IBOutlet weak var browserBtn: UIButton!
+    @IBOutlet weak var trackBtn: UIButton!
+    
     @IBOutlet weak var ipTextField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
@@ -55,6 +57,11 @@ class CameraDetailViewController: UIViewController {
         self.browserBtn.layer.cornerRadius = self.browserBtn.frame.size.height/2
         self.browserBtn.backgroundColor = UIColor(red: 0xff, green: 0xda, blue: 0x00) ?? UIColor()
         self.browserBtn.setTitle("浏览视频", for: .normal)
+        
+        self.trackBtn.layer.masksToBounds = true
+        self.trackBtn.layer.cornerRadius = self.trackBtn.frame.size.height/2
+        self.trackBtn.backgroundColor = UIColor(red: 0xff, green: 0xda, blue: 0x00) ?? UIColor()
+        self.trackBtn.setTitle("视频回放", for: .normal)
     }
     
     @objc func receivedMessage(notification: NSNotification) {
@@ -66,11 +73,38 @@ class CameraDetailViewController: UIViewController {
     
     @IBAction func browserVideo(_ sender: Any) {
         let videoViewController = PlayerViewController()
-//        self.present(videoViewController, animated: true) {
-//
-//        }
         let ip = ipTextField.text ?? ""
-        videoViewController.cameraIP = ip
+        let url = String(format: "rtsp://%@:1554/Streaming/Channels/101?transportmode=unicast", ip.count == 0  ? "113.90.238.121" : ip)
+        videoViewController.videoURL = url
+        self.navigationController?.pushViewController(videoViewController, animated: true)
+    }
+    
+    
+    @IBAction func trackVideo(_ sender: Any) {
+        let videoViewController = PlayerViewController()
+        //        self.present(videoViewController, animated: true) {
+        //
+        //        }
+        var date = Date()
+        let calendar = Calendar.current
+        var year = calendar.component(.year, from: date)
+        var month = calendar.component(.month, from: date)
+        var day = calendar.component(.day, from: date)
+        var hour = calendar.component(.hour, from: date)
+        var minute = calendar.component(.minute, from: date)
+        var second = calendar.component(.second, from: date)
+        let endTime = String(format: "%d%02d%02dt%02d%02d%02dz", year, month, day, hour, minute, second)
+        date = Date(timeIntervalSinceNow: -12*3600)
+        year = calendar.component(.year, from: date)
+        month = calendar.component(.month, from: date)
+        day = calendar.component(.day, from: date)
+        hour = calendar.component(.hour, from: date)
+        minute = calendar.component(.minute, from: date)
+        second = calendar.component(.second, from: date)
+        let startTime = String(format: "%d%02d%02dt%02d%02d%02dz", year, month, day, hour, minute, second)
+        let ip = ipTextField.text ?? ""
+        let url = String(format: "rtsp://%@:1554/Streaming/tracks/101?starttime=%@&endtime=%@", ip.count == 0 ? "113.90.238.121" : ip, startTime, endTime)
+        videoViewController.videoURL = url
         self.navigationController?.pushViewController(videoViewController, animated: true)
     }
 }
