@@ -3,6 +3,7 @@ PODS:
   - CocoaAsyncSocket (7.6.3)
   - CocoaMQTT (1.1.3):
     - CocoaAsyncSocket (~> 7.6.3)
+  - MobileVLCKit (3.2.0)
   - Moya (12.0.1):
     - Moya/Core (= 12.0.1)
   - Moya/Core (12.0.1):
@@ -41,6 +42,7 @@ PODS:
 
 DEPENDENCIES:
   - CocoaMQTT
+  - MobileVLCKit
   - Moya (~> 12.0)
   - PromiseKit (~> 6.0)
   - SnapKit (~> 4.0.0)
@@ -53,6 +55,7 @@ SPEC REPOS:
     - Alamofire
     - CocoaAsyncSocket
     - CocoaMQTT
+    - MobileVLCKit
     - Moya
     - PromiseKit
     - Result
@@ -65,6 +68,7 @@ SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   CocoaMQTT: b506d38ad3bbe1c55a4f8ee8c9fd02c35da1a7d8
+  MobileVLCKit: f7af7d6bee693b904265768eaae6a0ed29fdcd65
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   PromiseKit: 453ddcc947fe7b302f3ef41882b81d31c554df7f
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
@@ -73,6 +77,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
 
-PODFILE CHECKSUM: 3ee68b89d0d425c4b090c37391d1a9f90bdb22ce
+PODFILE CHECKSUM: 7b063cd305cbea9910761a69d357ed0294172d3c
 
 COCOAPODS: 1.6.0.beta.2

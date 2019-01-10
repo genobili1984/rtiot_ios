@@ -50,6 +50,7 @@ class LoginViewController: UIViewController {
     */
 
     @IBAction func loginBtnClick(_ sender: Any) {
+        self.view.endEditing(true)
         let username = self.accountTextField.text ?? ""
         let password = self.passwdTextField.text
         let md5 = password?.MD5 ?? ""

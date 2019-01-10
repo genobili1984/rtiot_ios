@@ -11,4 +11,5 @@ target 'iot' do
    pod 'SwifterSwift'
    pod 'CocoaMQTT'
    pod 'SwiftyJSON', '~> 4.0'
+   pod 'MobileVLCKit'
 end

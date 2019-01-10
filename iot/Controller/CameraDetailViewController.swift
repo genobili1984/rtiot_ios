@@ -19,6 +19,8 @@ class CameraDetailViewController: UIViewController {
     @IBOutlet weak var equipmentStateLabel: UILabel!
     @IBOutlet weak var equipmentFaultLabel: UILabel!
     
+    @IBOutlet weak var browserBtn: UIButton!
+    @IBOutlet weak var ipTextField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -48,12 +50,27 @@ class CameraDetailViewController: UIViewController {
         self.longitudeLabel.text = cameraInfo?.longitude ?? ""
         self.equipmentStateLabel.text = cameraInfo?.lampIsOpen ?? false ? "开" : "关"
         self.equipmentFaultLabel.text = cameraInfo?.fault ?? "" == "0" ? "正常" : "损坏"
+        
+        self.browserBtn.layer.masksToBounds = true
+        self.browserBtn.layer.cornerRadius = self.browserBtn.frame.size.height/2
+        self.browserBtn.backgroundColor = UIColor(red: 0xff, green: 0xda, blue: 0x00) ?? UIColor()
+        self.browserBtn.setTitle("浏览视频", for: .normal)
     }
     
     @objc func receivedMessage(notification: NSNotification) {
-        let userInfo = notification.userInfo as! [String: AnyObject]
-        let content = userInfo["message"] as! String
-        let topic = userInfo["topic"] as! String
+//        let userInfo = notification.userInfo as! [String: AnyObject]
+//        let content = userInfo["message"] as! String
+//        let topic = userInfo["topic"] as! String
         
+    }
+    
+    @IBAction func browserVideo(_ sender: Any) {
+        let videoViewController = PlayerViewController()
+//        self.present(videoViewController, animated: true) {
+//
+//        }
+        let ip = ipTextField.text ?? ""
+        videoViewController.cameraIP = ip
+        self.navigationController?.pushViewController(videoViewController, animated: true)
     }
 }
