@@ -17,6 +17,7 @@ class PlayerViewController: UIViewController {
     var videoURL : String?
     var mediaPlayer: VLCMediaPlayer = VLCMediaPlayer()
     
+    var lastPlayerState : VLCMediaPlayerState = VLCMediaPlayerState.stopped
     var previousPlayerStatePaused = false
     
     override func viewDidLoad() {
@@ -131,12 +132,16 @@ class PlayerViewController: UIViewController {
         if state == VLCMediaPlayerState.playing || state == VLCMediaPlayerState.paused  {
             self.previousPlayerStatePaused = state == VLCMediaPlayerState.paused
         }
-        let shouldAnimate = state == VLCMediaPlayerState.buffering && !self.previousPlayerStatePaused
+        var shouldAnimate = state == VLCMediaPlayerState.buffering && !self.previousPlayerStatePaused
+        if  state == VLCMediaPlayerState.esAdded  || (state == VLCMediaPlayerState.playing && self.lastPlayerState == VLCMediaPlayerState.esAdded ) {
+            shouldAnimate = true
+        }
         print("shouldAnimate = \(shouldAnimate)")
         if self.activityView.isAnimating != shouldAnimate {
             self.activityView.alpha = shouldAnimate ? 1.0 : 0.0
             shouldAnimate ? self.activityView.startAnimating() : self.activityView.stopAnimating()
         }
+        self.lastPlayerState = state;
     }
 }
 

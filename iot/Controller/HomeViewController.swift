@@ -155,6 +155,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
             let detailViewController = CameraDetailViewController(nibName:"CameraDetailViewController", bundle:nil)
             let cameraInfo = deviceInfo as? CameraInfo
             detailViewController.cameraInfo = cameraInfo
+            detailViewController.channelIndex = row + 1
             self.navigationController?.pushViewController(detailViewController)
         case "lamp":
             let detailViewController = LampDetailViewController(nibName:"LampDetailViewController", bundle:nil)

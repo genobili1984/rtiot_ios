@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwifterSwift
 
 class CameraDetailViewController: UIViewController {
     
@@ -27,6 +28,7 @@ class CameraDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var cameraInfo : CameraInfo?
+    var channelIndex:Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +76,14 @@ class CameraDetailViewController: UIViewController {
     @IBAction func browserVideo(_ sender: Any) {
         let videoViewController = PlayerViewController()
         let ip = ipTextField.text ?? ""
-        let url = String(format: "rtsp://%@:1554/Streaming/Channels/101?transportmode=unicast", ip.count == 0  ? "113.118.46.190" : ip)
+        let equipmentCode = self.cameraInfo?.equipmentCode;
+        //取最后一位作为channelId
+        var channelId = "1"
+        let len = equipmentCode?.count ?? 0
+        if len > 0  {
+            channelId = equipmentCode!.slicing(from: len-1, length: 1) ?? ""
+        }
+        let url = String(format: "rtsp://%@:1554/Streaming/Channels/%@01?transportmode=unicast", ip.count == 0  ? "113.118.46.190" : ip,  channelId )
         videoViewController.videoURL = url
         self.navigationController?.pushViewController(videoViewController, animated: true)
     }
@@ -103,7 +112,14 @@ class CameraDetailViewController: UIViewController {
         second = calendar.component(.second, from: date)
         let startTime = String(format: "%d%02d%02dt%02d%02d%02dz", year, month, day, hour, minute, second)
         let ip = ipTextField.text ?? ""
-        let url = String(format: "rtsp://%@:1554/Streaming/tracks/101?starttime=%@&endtime=%@", ip.count == 0 ? "113.90.238.121" : ip, startTime, endTime)
+        var channelId = "1"
+        let equipmentCode = self.cameraInfo?.equipmentCode ?? ""
+        //取最后一位作为channelId
+        let len = equipmentCode.count
+        if len > 0  {
+            channelId = equipmentCode.slicing(from: len-1, length: 1) ?? ""
+        }
+        let url = String(format: "rtsp://%@:1554/Streaming/tracks/%@01?starttime=%@&endtime=%@", ip.count == 0 ? "113.118.46.190" : ip,  channelId, startTime, endTime)
         videoViewController.videoURL = url
         self.navigationController?.pushViewController(videoViewController, animated: true)
     }
