@@ -17,13 +17,15 @@ class PlayerViewController: UIViewController {
     var videoURL : String?
     var mediaPlayer: VLCMediaPlayer = VLCMediaPlayer()
     
-    var lastPlayerState : VLCMediaPlayerState = VLCMediaPlayerState.paused
+    var previousPlayerStatePaused = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "视频监控"
         self.setUpSubViews()
+        
+        self.mediaPlayer.addObserver(self, forKeyPath: "time", options: [], context: nil)
         //Add rotation observer
         NotificationCenter.default.addObserver(
             self,
@@ -69,6 +71,7 @@ class PlayerViewController: UIViewController {
     }
     
     deinit {
+        self.mediaPlayer.removeObserver(self, forKeyPath: "time")
         mediaPlayer.stop()
     }
     
@@ -86,20 +89,6 @@ class PlayerViewController: UIViewController {
         activityView = UIActivityIndicatorView(style: .white)
         self.movieView.addSubview(activityView)
         self.activityView.center = self.movieView.center
-    }
-    
-    private func startLoading() {
-        if !self.activityView.isAnimating {
-            self.activityView.startAnimating()
-        }
-        self.activityView.isHidden = false
-    }
-    
-    private func stopLoading() {
-        if self.activityView.isAnimating {
-            self.activityView.stopAnimating()
-        }
-        self.activityView.isHidden = true
     }
 
     @objc func rotated() {
@@ -129,7 +118,25 @@ class PlayerViewController: UIViewController {
             mediaPlayer.play()
             print("Playing")
         }
-        
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "time"  {
+            self.updateActivityIndicatorForState(forState: VLCMediaPlayerState.playing)
+        }
+    }
+    
+    
+    private func updateActivityIndicatorForState(forState state:VLCMediaPlayerState) {
+        if state == VLCMediaPlayerState.playing || state == VLCMediaPlayerState.paused  {
+            self.previousPlayerStatePaused = state == VLCMediaPlayerState.paused
+        }
+        let shouldAnimate = state == VLCMediaPlayerState.buffering && !self.previousPlayerStatePaused
+        print("shouldAnimate = \(shouldAnimate)")
+        if self.activityView.isAnimating != shouldAnimate {
+            self.activityView.alpha = shouldAnimate ? 1.0 : 0.0
+            shouldAnimate ? self.activityView.startAnimating() : self.activityView.stopAnimating()
+        }
     }
 }
 
@@ -154,33 +161,7 @@ extension PlayerViewController : VLCMediaPlayerDelegate {
         }
         let state = player.state  //VLCMediaPlayerState
         print( "state = \(state.rawValue)")
-        switch state  {
-        case VLCMediaPlayerState.stopped:
-            self.mediaPlayer.stop()
-            self.stopLoading()
-            self.movieView.makeToast("播放停止", duration: 2.0, position: .bottom)
-        case VLCMediaPlayerState.opening:
-            self.startLoading()
-        case VLCMediaPlayerState.playing:
-            if self.lastPlayerState != VLCMediaPlayerState.esAdded {
-                self.stopLoading()
-            }
-        case VLCMediaPlayerState.buffering:
-            if self.lastPlayerState == VLCMediaPlayerState.esAdded || self.lastPlayerState == VLCMediaPlayerState.buffering {
-                self.stopLoading()
-            }else{
-                self.startLoading()
-            }
-        case VLCMediaPlayerState.esAdded:
-            self.startLoading()
-        case VLCMediaPlayerState.error:
-            self.mediaPlayer.stop()
-            self.stopLoading()
-            self.movieView.makeToast("播放错误", duration: 2.0, position: .bottom)
-        default:
-            break
-        }
-        self.lastPlayerState = state
+        self.updateActivityIndicatorForState(forState: state)
     }
     
     func mediaPlayerTimeChanged(_ aNotification: Notification!) {

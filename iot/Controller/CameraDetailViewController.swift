@@ -74,7 +74,7 @@ class CameraDetailViewController: UIViewController {
     @IBAction func browserVideo(_ sender: Any) {
         let videoViewController = PlayerViewController()
         let ip = ipTextField.text ?? ""
-        let url = String(format: "rtsp://%@:1554/Streaming/Channels/101?transportmode=unicast", ip.count == 0  ? "113.90.238.121" : ip)
+        let url = String(format: "rtsp://%@:1554/Streaming/Channels/101?transportmode=unicast", ip.count == 0  ? "113.118.46.190" : ip)
         videoViewController.videoURL = url
         self.navigationController?.pushViewController(videoViewController, animated: true)
     }
