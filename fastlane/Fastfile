@@ -1,0 +1,154 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+#修改版本号，编译号
+def prepare_version(options)
+    #增加版本号,编译好，需要先配置build setting 
+    increment_version_number( version_number: options[:version] )
+    increment_build_number( build_number: options[:build] )
+end
+
+#修改工程的bundleID
+def prepare_bundle(options)
+    update_info_plist(
+        plist_path:"./iot/Info.plist",
+        xcodeproj:"iot.xcodeproj",
+        display_name:"览拓",
+    )
+end
+
+filename=""
+ 
+platform :ios do
+    before_all  do |lane, options|
+         #cocoapods
+         puts "options version = $#{options[:version]}$"
+         puts "options build = $#{options[:build]}$"
+         puts "options env = $#{options[:env]}$"
+         puts "options branch = $#{options[:branch]}$"
+         puts "options upload = $#{options[:upload]}#"
+         prepare_version( options )
+     end
+
+     desc "编译调试环境包"
+     lane :beta do |options|
+         filename="#{options[:version]}.#{options[:build]}_iot_#{options[:env]}_develop_#{options[:branch]}.ipa"
+         gym(
+         scheme:"iot",
+         clean:true,
+         configuration:"Debug",
+         #codesigning_identity:"iPhone Distribution: Evergrande Real Estate Group Pearl River Delta Co., Ltd. (74REQ6MMZH)",
+         codesigning_identity:"iPhone Developer: Yifeng Mao (6ZNKYDB553)",
+         export_method:"development",
+         output_name:"#{options[:version]}.#{options[:build]}_iot_#{options[:env]}_develop_#{options[:branch]}",
+         output_directory:"./build"
+        )
+     end
+
+     desc "编译企业包"
+     lane :enterprise do |options|
+         filename="#{options[:version]}.#{options[:build]}_BeeHome_#{options[:env]}_Enterprise_#{options[:branch]}.ipa"
+         #sigh(
+         #provisioning_name:"iPhone Distribution: Evergrande Real Estate Group Pearl River Delta Co., Ltd. (74REQ6MMZH)",
+         #adhoc:"true",
+         #output_path:"./sigh"
+         #)
+         update_info_plist( plist_path:"./SmartHome/Info.plist", xcodeproj:"SmartHome.xcodeproj", display_name:"星络智能家居")
+         update_project_provisioning(profile:"./fastlane/XL_Enterprise_BeeHome_InHouse.mobileprovision", build_configuration:"Release")
+         #打包
+         gym(
+         scheme:"SmartHome",
+         clean:true,
+         configuration:"Release",
+         #codesigning_identity:"iPhone Distribution: Evergrande Real Estate Group Pearl River Delta Co., Ltd. (74REQ6MMZH)",
+         codesigning_identity:"iPhone Distribution: Evergrande Real Estate Group Pearl River Delta Co., Ltd.",
+         export_method:"enterprise",
+         output_name:"#{options[:version]}.#{options[:build]}_BeeHome_#{options[:env]}_Enterprise_#{options[:branch]}",
+         output_directory:"./build"
+         ) 
+         #上传到ftp服务器
+         if "#{options[:upload]}" == ""
+             sh "./upload_ipa.sh #{Dir.pwd}/../build/#{filename}"
+         end
+     end
+
+     desc "性能测试包"
+     lane :adhoc do |options|
+         filename="#{options[:version]}.#{options[:build]}_iot_#{options[:env]}_adhoc_#{options[:branch]}.ipa"
+         #sigh(
+         #provisioning_name:"iPhone Distribution: Evergrande Real Estate Group Pearl River Delta Co., Ltd. (74REQ6MMZH)",
+         #adhoc:"true",
+         #output_path:"./sigh"
+         #)
+         update_project_provisioning(profile:"./fastlane/tanktop_adhoc.mobileprovision", build_configuration:"Release")
+         #打包
+         gym(
+         scheme:"iot",
+         clean:true,
+         configuration:"Release",
+         #codesigning_identity:"iPhone Distribution: Evergrande Real Estate Group Pearl River Delta Co., Ltd. (74REQ6MMZH)",
+         codesigning_identity:"iPhone Distribution: Yifeng Mao (CWG338CT78)",
+         export_method:"adhoc",
+         output_name:"#{options[:version]}.#{options[:build]}_iot_#{options[:env]}_adhoc_#{options[:branch]}",
+         output_directory:"./build"
+         ) 
+      end
+
+      desc "发布到AppStore"
+      lane :appstore do |options|
+          filename="#{options[:version]}.#{options[:build]}_BeeHome_#{options[:env]}_Appstore_#{options[:branch]}.ipa"
+          #修改bundleID
+          prepare_bundle(options) 
+          update_project_provisioning(profile:"./fastlane/SmartHome_App_Store.mobileprovision", build_configuration:"Release")
+          update_project_team(path: "./SmartHome.xcodeproj", teamid: "74REQ6MMZH")
+          #增加build版本号,需要先配置build setting
+          #increment_build_number
+          #pod资源更新
+          #cocoapods
+          #打包
+         gym(
+           scheme:"SmartHome",
+           clean:true,
+           configuration:"Release",
+           codesigning_identity:"iPhone Distribution: Evergrande Real Estate Group Pearl River Delta Co., Ltd. (74REQ6MMZH)",
+           export_method:"app-store",
+           output_name:"#{options[:version]}.#{options[:build]}_BeeHome_#{options[:env]}_Appstore_#{options[:branch]}",
+           output_directory:"./build"
+          )
+          if "#{options[:upload]}" == ""
+              #发布到AppStore
+              deliver(
+                  username:"hlwprogramdev@evergrande.cn",
+                  app_identifier:"cn.evergrande.it.beehome",
+                  ipa:"./build/#{filename}",
+                  app:"1404189085",
+                  force: true
+              )
+          end
+      end
+
+     #执行成功后的回调
+     after_all  do |lane, options|
+        #这里是用mailgun发送邮件，需要在www.mailgun.com网站注册账号，这里注册了一个账号：maoyifeng@xl.cn 密码：123456登录，你也可以自己注册一个，注意替换自己的apikey, domain即可， 注意邮件接收者需要先在mailgun邮箱系统里发邀请，对方邮件确认后才发送邮件， 否则发送的时候会有异常
+        mailgun(postmaster:"postmaster@sandboxeafa049f96ce4b589dd3a8cc5f5a604f.mailgun.org", apikey:"49635ad0f960baa0f9e6b29bc39db6c1-8889127d-154a136e", to:"maoyifeng@xl.cn", from:"冒宜峰", message:"打包成功!", subject:"打包结果", app_link:"#{ftpPrefix}", success: true)
+     end
+
+     #如果流程异常终止会执行这里
+     error do |lane, exception|
+        mailgun(postmaster:"postmaster@sandboxeafa049f96ce4b589dd3a8cc5f5a604f.mailgun.org", apikey:"49635ad0f960baa0f9e6b29bc39db6c1-8889127d-154a136e", to:"maoyifeng@xl.cn", from:"冒宜峰", message:"打包失败!", subject:"打包结果", app_link:"http://www.baidu.com", success: false)
+     end
+end

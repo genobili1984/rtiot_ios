@@ -76,12 +76,12 @@ class CameraDetailViewController: UIViewController {
     @IBAction func browserVideo(_ sender: Any) {
         let videoViewController = PlayerViewController()
         let ip = ipTextField.text ?? ""
-        let equipmentCode = self.cameraInfo?.equipmentCode;
+        let equipmentCode = self.cameraInfo?.equipmentCode ?? "";
         //取最后一位作为channelId
         var channelId = "1"
-        let len = equipmentCode?.count ?? 0
+        let len = equipmentCode.count
         if len > 0  {
-            channelId = equipmentCode!.slicing(from: len-1, length: 1) ?? ""
+            channelId = equipmentCode.slicing(from: len-1, length: 1) ?? ""
         }
         let url = String(format: "rtsp://%@:1554/Streaming/Channels/%@01?transportmode=unicast", ip.count == 0  ? "113.118.46.190" : ip,  channelId )
         videoViewController.videoURL = url
