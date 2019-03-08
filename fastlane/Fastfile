@@ -144,11 +144,11 @@ platform :ios do
      #执行成功后的回调
      after_all  do |lane, options|
         #这里是用mailgun发送邮件，需要在www.mailgun.com网站注册账号，这里注册了一个账号：maoyifeng@xl.cn 密码：123456登录，你也可以自己注册一个，注意替换自己的apikey, domain即可， 注意邮件接收者需要先在mailgun邮箱系统里发邀请，对方邮件确认后才发送邮件， 否则发送的时候会有异常
-        mailgun(postmaster:"postmaster@sandboxeafa049f96ce4b589dd3a8cc5f5a604f.mailgun.org", apikey:"49635ad0f960baa0f9e6b29bc39db6c1-8889127d-154a136e", to:"maoyifeng@xl.cn", from:"冒宜峰", message:"打包成功!", subject:"打包结果", app_link:"#{ftpPrefix}", success: true)
+        #mailgun(postmaster:"postmaster@sandboxeafa049f96ce4b589dd3a8cc5f5a604f.mailgun.org", apikey:"49635ad0f960baa0f9e6b29bc39db6c1-8889127d-154a136e", to:"maoyifeng@xl.cn", from:"冒宜峰", message:"打包成功!", subject:"打包结果", app_link:"#{ftpPrefix}", success: true)
      end
 
      #如果流程异常终止会执行这里
      error do |lane, exception|
-        mailgun(postmaster:"postmaster@sandboxeafa049f96ce4b589dd3a8cc5f5a604f.mailgun.org", apikey:"49635ad0f960baa0f9e6b29bc39db6c1-8889127d-154a136e", to:"maoyifeng@xl.cn", from:"冒宜峰", message:"打包失败!", subject:"打包结果", app_link:"http://www.baidu.com", success: false)
+        #mailgun(postmaster:"postmaster@sandboxeafa049f96ce4b589dd3a8cc5f5a604f.mailgun.org", apikey:"49635ad0f960baa0f9e6b29bc39db6c1-8889127d-154a136e", to:"maoyifeng@xl.cn", from:"冒宜峰", message:"打包失败!", subject:"打包结果", app_link:"http://www.baidu.com", success: false)
      end
 end
