@@ -46,7 +46,7 @@ platform :ios do
 
      desc "编译调试环境包"
      lane :beta do |options|
-         filename="#{options[:version]}.#{options[:build]}_iot_#{options[:env]}_develop_#{options[:branch]}.ipa"
+         filename="#{options[:version]}.#{options[:build]}_iot_develop_#{options[:branch]}.ipa"
          gym(
          scheme:"iot",
          clean:true,
@@ -54,7 +54,7 @@ platform :ios do
          #codesigning_identity:"iPhone Distribution: Evergrande Real Estate Group Pearl River Delta Co., Ltd. (74REQ6MMZH)",
          codesigning_identity:"iPhone Developer: Yifeng Mao (6ZNKYDB553)",
          export_method:"development",
-         output_name:"#{options[:version]}.#{options[:build]}_iot_#{options[:env]}_develop_#{options[:branch]}",
+         output_name:"#{options[:version]}.#{options[:build]}_iot_develop_#{options[:branch]}",
          output_directory:"./build"
         )
      end
@@ -86,9 +86,9 @@ platform :ios do
          end
      end
 
-     desc "性能测试包"
+     desc "Adhoc测试包"
      lane :adhoc do |options|
-         filename="#{options[:version]}.#{options[:build]}_iot_#{options[:env]}_adhoc_#{options[:branch]}.ipa"
+         filename="#{options[:version]}.#{options[:build]}_iot_adhoc_#{options[:branch]}.ipa"
          #sigh(
          #provisioning_name:"iPhone Distribution: Evergrande Real Estate Group Pearl River Delta Co., Ltd. (74REQ6MMZH)",
          #adhoc:"true",
@@ -103,7 +103,7 @@ platform :ios do
          #codesigning_identity:"iPhone Distribution: Evergrande Real Estate Group Pearl River Delta Co., Ltd. (74REQ6MMZH)",
          codesigning_identity:"iPhone Distribution: Yifeng Mao (CWG338CT78)",
          export_method:"adhoc",
-         output_name:"#{options[:version]}.#{options[:build]}_iot_#{options[:env]}_adhoc_#{options[:branch]}",
+         output_name:"#{options[:version]}.#{options[:build]}_iot_adhoc_#{options[:branch]}",
          output_directory:"./build"
          ) 
       end
