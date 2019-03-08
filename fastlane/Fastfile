@@ -102,7 +102,7 @@ platform :ios do
          configuration:"Release",
          #codesigning_identity:"iPhone Distribution: Evergrande Real Estate Group Pearl River Delta Co., Ltd. (74REQ6MMZH)",
          codesigning_identity:"iPhone Distribution: Yifeng Mao (CWG338CT78)",
-         export_method:"adhoc",
+         export_method:"ad-hoc",
          output_name:"#{options[:version]}.#{options[:build]}_iot_adhoc_#{options[:branch]}",
          output_directory:"./build"
          ) 
